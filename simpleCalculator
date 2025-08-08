@@ -1,0 +1,38 @@
+def add(n1, n2):
+    return n1 + n2
+
+def subtract(n1, n2):
+    return n1 - n2
+
+def multiply(n1, n2):
+    return n1 * n2
+
+def divide(n1, n2):
+    if n1 == 0 or n2 == 0:
+        print("Cannot divide by 0")
+        return
+    return n1 / n2
+
+calc_dict = {"+" : add, "-" : subtract, "*" : multiply, "/" : divide}
+
+#print(calc_dict["*"](4, 8))
+end = ""
+while end != "y":
+    x = float(input("What is the first number?\n"))
+    operation = input("What operation would you like to perform\n")
+    y = float(input("What is the second number\n"))
+
+#fix division
+    print(calc_dict[operation](x,y))
+
+    ask = input("Would you like to work with previous result? y or n\nPress e to end\n")
+    if ask == "y":
+        while ask == "y":
+            operation = input("What operation would you like to perform?\n")
+            y = float(input("What is the second number?\n"))
+
+            print(calc_dict[operation](x, y))
+
+            ask = input("Would you like to work with previous result? y or n\nPress e to end\n")
+    if ask == "e":
+        end = "y"
